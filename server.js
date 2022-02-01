@@ -2,19 +2,19 @@ import "dotenv/config.js";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import createError from "http-errors";
 import session from "express-session";
 import methodOverride from "method-override";
 import logger from "morgan";
 import cors from "cors";
+import { passUserToView } from "./middleware/middleware.js";
 
+// connect to MongoDB with mongoose
+import('./config/database.js')
+
+// require routes
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from "./routes/auth.js";
 import { router as indexRouter } from "./routes/index.js"
-
-import('./config/database.js')
-
-console.log('hello this is server.js')
 
 // create the express app
 const app = express();
@@ -28,6 +28,7 @@ app.set("view engine", "ejs");
 
 //middleware
 app.use(methodOverride("_method"));
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -49,9 +50,8 @@ app.use(
   })
 );
 
-app.use(cors());
-app.use(logger("dev"));
-app.use(express.json());
+//custom middleware
+app.use(passUserToView);
 
 // router middleware
 app.use("/", indexRouter)
