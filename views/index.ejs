@@ -4,76 +4,15 @@
 
 <main>
   <div id="topSpaceBuffer"></div>
-  <% if (!user) { %>
+
   <div id="welcomescreen">
     <p>
-      <b>Welcome to Homecooked.</b> For full access to the site, please login
-      above. We promise not to track any of your information. We cannot promise
-      that your friends and family won't be tracking your calories though.
+      <b>Welcome to the Spelling Bee Practice Tool backend admin pages.</b> For full admin access  please login
+      above. For User login and full app experience please login to the front end.
     </p>
   </div>
-  <% } %> <%recipes.forEach(recipe => { %>
-    <% if (recipe.visible) { %>
-  <div id="recipesDetailView">
-    <h2><%=recipe.name%></h2>
-    <% if (recipe.picture) {%>
-    <img
-      id="recipeFoodPic"
-      src="<%=recipe.picture%>"
-      alt="Picture of prepared food"
-    />
-    <% } %>
-    <b>Prep Time:</b> <%=recipe.PrepTime%><br />
-    <b>Cook Time:</b> <%=recipe.cookTime%><br />
-    <b>Temperature:</b> <%=recipe.temp%> Fahrenheit<br />
-    <b>Portions:</b> <%=recipe.yield%><br />
-    <% if (recipe.ingredients.length) { %>
-    <br />
-    <b>Ingredients:</b>
-    <br />
-    <div id="ingredienList">
-      <% recipe.ingredients.forEach(ingredient => { %> <%=ingredient %><br />
-      <%});%>
-    </div>
-    <% } %>
-    <br />
-    <div id="cookInstructions"><b>Instructions:</b> <%=recipe.instructions%></div>
-    <br />
-    <br />
-    <% if (user) { %>
-    <div id="commentatorInfo">
-      Created by:
-      <img id="profilePic" src="<%=recipe.ownerAvatar%>" /> <%=recipe.ownerName
-      %>
-    </div>
-    <%}%> <% let total=0 %> <% recipe.rating.forEach((rate) => { %> <% total+=
-    rate %> <% }) %> <% let averageRating = total / recipe.rating.length %>
-    <div id="ratingBox">
-      Average Rating<br />
-      <% if (recipe.rating.length ===0) { %>
-        There are currently no ratings yet.
-      <% } %>
-      <div
-        class="Stars"
-        style="--rating: <%=averageRating %>"
-        aria-label="Rating"
-      ></div>
-    </div>
-    <% if (user) { %> <% recipe.comments.forEach(comment => { %>
-    <div id="recipeComment">
-      <%=comment.content %>
-      <br />
-      <div id="commentatorInfo">
-        <img id="profilePic" src="<%=comment.avatar%>" />
-        <span id="commentator"
-          ><b><%=comment.name %></b> commented on
-          <%=comment.createdAt.toString().substring(0,15) %> at
-          <%=comment.createdAt.toString().substring(16, 21) %> 
-        </div>
-      </div>
-    <% }) %>
-  <% } %>
-  <% } %>
-</div>
-<% }) %> 
+
+  
+    <p>Welcome to the Spelling Be Practice Tool Back End Admin Pages</p>
+
 </main>

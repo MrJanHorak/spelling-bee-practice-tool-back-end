@@ -4,31 +4,23 @@
 
 
   <div id="maintitle">
-    <img id="logo" src="/images/Daco_4427061.png" alt="cooking pot">
-    <h1 id="websiteTitle">Homecooked.</h1>
+  
+    <h1 id="websiteTitle">Spelling Be Pratice Tool.</h1>
   </div>
 
   <nav >
   <ul>
-    <% if (user) { %>
+
     <li><a href="/">Home</a></li>
-    <li><a href="/recipes">Recipes</a>
+    <li><a href="/wordlists">Wordlists</a>
       <ul class="dropdown">
-        <li><a href="/recipes/">View All</a></li>
-        <li><a href="/recipes/new">Add One</a></li>
+        <li><a href="/wordlists/">View All</a></li>
+        <li><a href="/wordlists/new">Add One</a></li>
       </ul>
     </li>
-    <li><a href="/mealplans">Meal Plan</a>
-      <ul class="dropdown">
-        <li><a href="/mealplans">View All</a></li>
-      <li><a href="/mealplans/new">Add One</a></li>
-    </ul>
-  </li>
-  <li><a href="/profiles/">Cooks</a>
+  <li><a href="/profiles/">Users</a>
     <ul class="dropdown">
       <li><a href="/profiles/">All Profiles</a></li>
-      <li><a href="/profiles/<%=user.profile.id%>">Your Profile<img id="profilePic" src="<%= user.profile.avatar %>" 
-        alt="<%= user.profile.name %> avatar"></a></li>
       <li><a href="/auth/logout">Logout</a></li>
     </ul>  
     </li>
@@ -36,13 +28,12 @@
 </nav>
 </div>
 
-<% } else { %>
-  <a href="/auth/google" class="siwg-link">
-    <button type="submit" class="siwg">
-      <img id="siwg-image" alt="Sign in with Google" />
+
+  <a href="/auth/signin" class="si-link">
+    <button type="submit" class="si">
     </button>
   </a>
-  <% } %>
+
 </nav>
 </div>
 <body>

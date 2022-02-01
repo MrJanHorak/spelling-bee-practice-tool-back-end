@@ -24,7 +24,6 @@ const server = http.createServer(app);
  */
 
 server.listen(port);
-console.log('listening')
 server.on("error", onError);
 server.on("listening", onListening);
 
