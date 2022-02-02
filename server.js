@@ -6,7 +6,7 @@ import session from "express-session";
 import methodOverride from "method-override";
 import logger from "morgan";
 import cors from "cors";
-import { passUserToView } from "./middleware/middleware.js";
+import { passUserToView } from "./middleware/auth.js";
 
 // connect to MongoDB with mongoose
 import('./config/database.js')

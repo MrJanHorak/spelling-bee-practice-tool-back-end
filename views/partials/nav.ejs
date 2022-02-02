@@ -3,37 +3,43 @@
 </head>
 
 
-  <div id="maintitle">
-  
-    <h1 id="websiteTitle">Spelling Bee Pratice Tool.</h1>
-  </div>
-
-  <nav >
-  <ul>
-
-    <li><a href="/">Home</a></li>
-    <li><a href="/wordlists">Wordlists</a>
-      <ul class="dropdown">
-        <li><a href="/wordlists/">View All</a></li>
-        <li><a href="/wordlists/new">Add One</a></li>
-      </ul>
-    </li>
-  <li><a href="/profiles/">Users</a>
-    <ul class="dropdown">
-      <li><a href="/profiles/">All Profiles</a></li>
-      <li><a href="/auth/logout">Logout</a></li>
-    </ul>  
-    </li>
-  </ul>
-</nav>
+<div id="maintitle">
+  <h1 id="websiteTitle">Spelling Bee Pratice Tool.</h1>
 </div>
-
-
-  <a href="/auth/signin" class="si-link">
-    <button type="submit" class="si">
-    </button>
-  </a>
-
-</nav>
+<nav >
+    
+    <ul>
+      <% if (user) { %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/wordlists">Wordlists</a>
+          <ul class="dropdown">
+            <li><a href="/wordlists/">View All</a></li>
+            <li><a href="/wordlists/new">Add One</a></li>
+          </ul>
+        </li>
+        <li><a href="/profiles/">Users</a>
+          <ul class="dropdown">
+            <li><a href="/profiles/">All Profiles</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+          </ul>  
+        </li>
+      </ul>
+    </nav>
+  </div>
+  
+  <% } else { %>
+    <a href="/auth/signin" class="si-link">  </a>
+    <form id="form">
+      <label for="uname">User Name:</label>
+      <input type="text" id="uname" name="username" placeholder="username"/>  
+      <label for="pword">Password:</label>
+      <input type="text" id="pword" name="pword" placeholder="password"/>  
+      <button type="submit" class="si">
+        login
+      </button>
+    </form>
+    
+    <% } %>
+  </nav>
 </div>
 <body>
