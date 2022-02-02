@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="/stylesheets/navv.css">
 <link href="https://fonts.googleapis.com/css?family=Arvo&display=swap" rel="stylesheet">
+
 </head>
 
+<div id="container">
 
 <div id="maintitle">
   <h1 id="websiteTitle">Spelling Bee Pratice Tool.</h1>
 </div>
+
 <nav >
-    
     <ul>
       <% if (user) { %>
         <li><a href="/">Home</a></li>
@@ -23,10 +25,9 @@
             <li><a href="/auth/logout">Logout</a></li>
           </ul>  
         </li>
-      </ul>
-    </nav>
-  </div>
-  
+    </ul>
+</nav>
+
   <% } else { %>
     <a href="/auth/signin" class="si-link">  </a>
     <form id="form">
@@ -38,8 +39,9 @@
         login
       </button>
     </form>
-    
+
     <% } %>
   </nav>
+</div>
 </div>
 <body>

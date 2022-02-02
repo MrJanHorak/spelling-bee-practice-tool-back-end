@@ -1,15 +1,5 @@
-body,
-html {
-  background-image: url("/images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 nav {
-  margin: 0 auto;
+  margin: 45px auto;
   display: flex;
   text-align: center;
   align-content: center;
@@ -94,8 +84,10 @@ ul li ul li a {
 }
 
 #maintitle {
+  margin-top: 30px;
   position: absolute;
   z-index: 2;
+  justify-content: center;
 }
 
 #topSpaceBuffer {
@@ -112,9 +104,16 @@ ul li ul li a {
   text-align: justify;
 }
 
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 1360px) {
   nav {
-    /* padding-top: 60px; */
     height: auto;
   }
 
