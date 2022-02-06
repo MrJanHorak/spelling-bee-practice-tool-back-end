@@ -3,34 +3,26 @@
 <%- include('./partials/nav') %>
 
 <main>
-
   <div id="topSpaceBuffer"></div>
 
   <div id="wordlists">
-
     <% if (user?.profile._id) { %>
       <div id="WordsetIndexView">
         <% wordsets.forEach(wordset =>{ %>
-          <% if (recipe.visible) { %> 
-            <a href="/wordsets/<%= wordset._id %>">
-              <div id="wordsetIndexCard">
-                <h2><%=wordset.grade%></h2>
-                <p>
-                  <b>Word Count:</b> <%=wordset.wordcount%>  
-                  <b>Definition Count:</b> <%=wordset.defCount%><br/>
-                  <b>Sample Sentance Count:</b> <%=wordset.sampSentCount%><br/>
-                </p>
-              </div>
-          <% } %>  
+          <a href="/wordsets/<%= wordset._id %>">
+            <div id="wordsetIndexCard">
+              <h2><%=wordset.grade%></h2>
+              <p>
+                <b>Word Count:</b> <%=wordset.wordcount%>
+                <b>Definition Count:</b> <%=wordset.defCount%><br />
+                <b>Sample Sentance Count:</b> <%=wordset.sampSentCount%><br />
+              </p>
+            </div>
+          </a>
         <%})%>
       </div>
     <% } %>
-
+  </div>
 </main>
 
-
-
-</div>
-
-</main>
 <%- include('./partials/footer') %>
