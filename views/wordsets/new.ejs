@@ -5,11 +5,48 @@
 <main>
   <div id="topSpaceBuffer"></div>
 
-  <div id="wordlists">
-
-
-    
+  <div id="newWordlists">
+    <form action="/wordSets" method="POST">
+      <b>Word: </b>
+      <input
+        type="text"
+        name="word"
+        placeholder="new word"
+        required
+        size="30"
+      />
+      <br />
+      <b>Word Definition:</b>
+      <br />
+      <textarea
+        placeholder="Word definition goes here."
+        name="definition"
+        cols="53"
+        rows="17"
+        required
+        spellcheck="true"
+        wrap="soft"
+      ></textarea>
+      <br />
+      <b>Alternative Pronunciation(s): </b>
+      <input
+        type="text"
+        name="altPronunciation"
+        placeholder="alternative pronunciations"
+        size="30"
+      />
+      <br />
+      <b>Word Origin: </b>
+      <input
+        type="text"
+        name="wordOrigin"
+        placeholder="word origin"
+        size="30"
+      />
+      <br />
+      <b>Grade Level: </b>
+      <input type="number" name="gradeLevel" required />
+    </form>
   </div>
-
 </main>
 <%- include('./partials/footer') %>
