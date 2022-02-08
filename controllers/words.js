@@ -60,5 +60,20 @@ function create(req, res) {
     })
   }
 
+  function update(req, res) {
+    Word.findById(req.params.id)
+    .then((word) => {
+      req.body.visible = !!req.body.visible
+      word.updateOne(rec.body, {new: true }).then(() => {
+        res.redirect(`/words/${word._id}`)
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.redirect("/words")
+    })
+  }
 
-export { index, newWord as new, create, show, edit,};
+
+
+export { index, newWord as new, create, show, edit, update, };
