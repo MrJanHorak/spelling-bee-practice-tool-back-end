@@ -1,7 +1,6 @@
 import { Word } from "../models/word.js";
 
 function index(req, res) {
-  // Find all words
   Word.find({})
     .sort({ word: "asc" })
     .then((words) => {
@@ -23,57 +22,76 @@ function newWord(req, res) {
 }
 
 function create(req, res) {
-  req.body.visible = !!req.body.visible
+  req.body.visible = !!req.body.visible;
   Word.create(req.body)
-  .then((word) => {
-    res.redirect("/words")
-  })
-  .catch((err) => {
-    console.log(err)
-    res.redirect("/words)")
-  })
-  }
+    .then((word) => {
+      res.redirect("/words");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/words)");
+    });
+}
 
-  function show(req, res) {
-    Word.findById(req.params.id)
+function show(req, res) {
+  Word.findById(req.params.id)
     .then((word) => {
       res.render("words/show", {
-        word
-      })
+        word,
+      });
     })
     .catch((err) => {
-      console.log(err)
-      res.redirect("/words")
-    })
-  }
+      console.log(err);
+      res.redirect("/words");
+    });
+}
 
-  function edit(req, res) {
-    Word.findById(req.params.id)
+function edit(req, res) {
+  Word.findById(req.params.id)
     .then((word) => {
       res.render("words/edit", {
-        word
-      })
+        word,
+      });
     })
     .catch((err) => {
-      console.log(err)
-      res.redirect("/words")
-    })
-  }
+      console.log(err);
+      res.redirect("/words");
+    });
+}
 
-  function update(req, res) {
-    Word.findById(req.params.id)
+function update(req, res) {
+  Word.findById(req.params.id)
     .then((word) => {
-      req.body.visible = !!req.body.visible
-      word.updateOne(rec.body, {new: true }).then(() => {
-        res.redirect(`/words/${word._id}`)
-      })
+      req.body.visible = !!req.body.visible;
+      word.updateOne(rec.body, { new: true }).then(() => {
+        res.redirect(`/words/${word._id}`);
+      });
     })
     .catch((err) => {
-      console.log(err)
-      res.redirect("/words")
+      console.log(err);
+      res.redirect("/words");
+    });
+}
+
+function deleteWord(req, res) {
+  Word.findById(req.params.id)
+    .then((word) => {
+      word.delete().then(() => {
+        res.redirect("/words");
+      });
     })
-  }
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/words");
+    });
+}
 
-
-
-export { index, newWord as new, create, show, edit, update, };
+export {
+  index,
+  newWord as new,
+  create,
+  show,
+  edit,
+  update,
+  deleteWord as delete,
+};
