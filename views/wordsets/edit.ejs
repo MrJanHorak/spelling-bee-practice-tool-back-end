@@ -5,15 +5,11 @@
 <main>
   <div id="topSpaceBuffer"></div>
 
+  <% if (user?.profile._id) { %>
   <div id="newWordlists">
     <form action="/wordSets/<%= wordset._id %>?_method=PUT" method="POST">
       <b>Word: </b>
-      <input
-        type="text"
-        name="word"
-        value="<%= wordset.word %>"
-        size="30"
-      />
+      <input type="text" name="word" value="<%= wordset.word %>" size="30" />
       <br />
       <b>Word Definition:</b>
       <br />
@@ -43,8 +39,13 @@
       />
       <br />
       <b>Grade Level: </b>
-      <input type="number" name="gradeLevel" value="<%= wordset.gradeLevel %>" />
+      <input
+        type="number"
+        name="gradeLevel"
+        value="<%= wordset.gradeLevel %>"
+      />
     </form>
   </div>
+  <% } %>
 </main>
 <%- include('./partials/footer') %>

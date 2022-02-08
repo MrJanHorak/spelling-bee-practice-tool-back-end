@@ -5,16 +5,20 @@
 <main>
   <div id="topSpaceBuffer"></div>
 
+  <% if (user?.profile._id) { %>
+
   <div id="newWordlists">
-      <b>Word: <%= wordset.word %></b>
-      <br />
-      <b>Word Definition: </b> <%= wordset.definition %>
-      <br />
-      <b>Alternative Pronunciation(s):</b> <%= wordset.altPronunciation %>  
-      <br />
-      <b>Word Origin: </b><%= wordset.wordOrigin %>
-      <br />
-      <b>Grade Level: </b><%= wordset.gradeLevel %>
+    <b>Word: <%= wordset.word %></b>
+    <br />
+    <b>Word Definition: </b> <%= wordset.definition %>
+    <br />
+    <b>Alternative Pronunciation(s):</b> <%= wordset.altPronunciation %>
+    <br />
+    <b>Word Origin: </b><%= wordset.wordOrigin %>
+    <br />
+    <b>Grade Level: </b><%= wordset.gradeLevel %>
   </div>
+
+  <% } %>
 </main>
 <%- include('./partials/footer') %>

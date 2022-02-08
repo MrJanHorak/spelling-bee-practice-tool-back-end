@@ -5,6 +5,8 @@
 <main>
   <div id="topSpaceBuffer"></div>
 
+  <% if (user?.profile._id) { %>
+
   <div id="newWordlists">
     <form action="/wordSets" method="POST">
       <b>Word: </b>
@@ -48,5 +50,7 @@
       <input type="number" name="gradeLevel" required />
     </form>
   </div>
+
+  <% } %>
 </main>
 <%- include('./partials/footer') %>
