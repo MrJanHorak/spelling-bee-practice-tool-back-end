@@ -1,0 +1,20 @@
+import { Router } from 'express'
+import * as wordCtrl from '../controllers/words.js'
+import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
+
+const router = Router()
+
+/*---------- Public Routes ----------*/
+
+
+/*---------- Protected Routes ----------*/
+router.use(decodeUserFromToken)
+router.get('/', checkAuth, wordCtrl.index)
+router.get('/new', checkAuth, wordCtrl.new)
+router.get('/:id', checkAuth, wordCtrl.show)
+router.get('/:id/edit', checkAuth, wordCtrl.edit)
+router.post('/', checkAuth, wordCtrl.create)
+router.put('/:id', checkAuth, wordCtrl.update)
+router.delete('/:id', checkAuth, wordCtrl.delete)
+
+export { router }
