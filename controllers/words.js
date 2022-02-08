@@ -34,6 +34,18 @@ function create(req, res) {
   })
   }
 
+  function show(req, res) {
+    Word.findById(req.params.id)
+    .then((word) => {
+      res.render("words/show", {
+        word
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.redirect("/words")
+    })
+  }
 
 
-export { index, newWord as new, create, };
+export { index, newWord as new, create, show,};
