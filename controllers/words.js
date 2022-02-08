@@ -14,6 +14,17 @@ function index(req, res) {
   })
 }
 
+function newWord(req, res) {
+  res.render("words/new")
+  .catch((err) => {
+    console.log(err)
+    res.redirect("/recipes")
+  })
+}
+
+
 export {
   index,
+  newWord as new,
+  
 }
