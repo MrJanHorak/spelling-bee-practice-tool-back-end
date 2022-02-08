@@ -5,11 +5,46 @@
 <main>
   <div id="topSpaceBuffer"></div>
 
-  <div id="wordlists">
-
-
-    
+  <div id="newWordlists">
+    <form action="/wordSets/<%= wordset._id %>?_method=PUT" method="POST">
+      <b>Word: </b>
+      <input
+        type="text"
+        name="word"
+        value="<%= wordset.word %>"
+        size="30"
+      />
+      <br />
+      <b>Word Definition:</b>
+      <br />
+      <textarea
+        value="<%= wordset.definition %>"
+        name="definition"
+        cols="53"
+        rows="17"
+        spellcheck="true"
+        wrap="soft"
+      ></textarea>
+      <br />
+      <b>Alternative Pronunciation(s): </b>
+      <input
+        type="text"
+        name="altPronunciation"
+        valye="<%= wordset.altPronunciation %>"
+        size="30"
+      />
+      <br />
+      <b>Word Origin: </b>
+      <input
+        type="text"
+        name="wordOrigin"
+        value="<%= wordset.wordOrigin %>"
+        size="30"
+      />
+      <br />
+      <b>Grade Level: </b>
+      <input type="number" name="gradeLevel" value="<%= wordset.gradeLevel %>" />
+    </form>
   </div>
-
 </main>
 <%- include('./partials/footer') %>
