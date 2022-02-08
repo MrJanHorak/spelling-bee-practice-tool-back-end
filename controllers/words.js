@@ -47,5 +47,18 @@ function create(req, res) {
     })
   }
 
+  function edit(req, res) {
+    Word.findById(req.params.id)
+    .then((word) => {
+      res.render("words/edit", {
+        word
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.redirect("/words")
+    })
+  }
 
-export { index, newWord as new, create, show,};
+
+export { index, newWord as new, create, show, edit,};
