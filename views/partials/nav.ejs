@@ -29,11 +29,11 @@
 </nav>
 
   <% } else { %>
-    <form id="form">
-      <label for="uname">User Name:</label>
-      <input type="text" id="uname" name="username" placeholder="username"/>  
-      <label for="pword">Password:</label>
-      <input type="text" id="pword" name="pword" placeholder="password"/>  
+    <form id="form" action="/auth/login" method="POST">
+      <label for="email;">user e-mail:</label>
+      <input type="text" id="email" name="email" placeholder="account e-mail"/>  
+      <label for="pw">Password:</label>
+      <input type="password" id="pw" name="pw" placeholder="password"/>  
       <button type="submit" class="si">
         login
       </button>

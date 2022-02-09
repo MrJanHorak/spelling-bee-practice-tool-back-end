@@ -3,7 +3,7 @@ import * as wordCtrl from '../controllers/words.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
-
+console.log("words router")
 /*---------- Public Routes ----------*/
 
 

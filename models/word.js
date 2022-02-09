@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const pwordSchema = new mongoose.Schema(
+const wordSchema = new mongoose.Schema(
   {
   word: String,
   definition: String,

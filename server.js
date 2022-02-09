@@ -15,6 +15,7 @@ import('./config/database.js')
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from "./routes/auth.js";
 import { router as indexRouter } from "./routes/index.js"
+import { router as wordRouter } from "./routes/words.js"
 
 // create the express app
 const app = express();
@@ -58,6 +59,7 @@ app.use("/", indexRouter)
 app.use("/auth", authRouter);
 app.use('/api/profiles', profilesRouter)
 app.use("/api/auth", authRouter);
+app.use("/words", wordRouter)
 
 // catch 404
 app.use(function (req, res, next) {
