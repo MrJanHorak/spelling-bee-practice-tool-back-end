@@ -17,6 +17,7 @@ const profileSchema = new mongoose.Schema({
   confidentWords: {
     type: Array,
   },
+  isAdmin: { type: Boolean, default: false },
 });
 
 const Profile = mongoose.model("Profile", profileSchema);
