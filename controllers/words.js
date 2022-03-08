@@ -4,73 +4,44 @@ function index(req, res) {
   Word.find({})
     .sort({ word: "asc" })
     .then((words) => {
-      res.render("words/index", {
-        words,
-      });
+      res.status(201).json(words);
     })
     .catch((err) => {
-      console.log(err);
-      res.redirect("/words");
+      return res.status(500).json(err);
     });
 }
 
-function newWord(req, res) {
-  res.render("words/new").catch((err) => {
-    console.log(err);
-    res.redirect("/words");
-  });
-}
-
 function create(req, res) {
-  req.body.visible = !!req.body.visible;
-  console.log("i am creating!")
+  console.log("i am creating!");
   Word.create(req.body)
-    .then((word) => {
-      res.redirect("/words");
-    })
+    .then(res.status(201).json(req.body))
     .catch((err) => {
       console.log(err);
-      res.redirect("/words)");
+      res.status(500).json(err);
     });
 }
 
 function show(req, res) {
   Word.findById(req.params.id)
     .then((word) => {
-      res.render("words/show", {
-        word,
-      });
+      res.status(200).json(word);
     })
     .catch((err) => {
       console.log(err);
-      res.redirect("/words");
-    });
-}
-
-function edit(req, res) {
-  Word.findById(req.params.id)
-    .then((word) => {
-      res.render("words/edit", {
-        word,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.redirect("/words");
+      res.status(500).json(error);
     });
 }
 
 function update(req, res) {
   Word.findById(req.params.id)
     .then((word) => {
-      req.body.visible = !!req.body.visible;
       word.updateOne(rec.body, { new: true }).then(() => {
-        res.redirect(`/words/${word._id}`);
+        res.status(200).json(word);
       });
     })
     .catch((err) => {
       console.log(err);
-      res.redirect("/words");
+      res.status(500).json(err);
     });
 }
 
@@ -78,21 +49,13 @@ function deleteWord(req, res) {
   Word.findById(req.params.id)
     .then((word) => {
       word.delete().then(() => {
-        res.redirect("/words");
+        res.status(204).end();
       });
     })
     .catch((err) => {
       console.log(err);
-      res.redirect("/words");
+      res.status(500).json(err);
     });
 }
 
-export {
-  index,
-  newWord as new,
-  create,
-  show,
-  edit,
-  update,
-  deleteWord as delete,
-};
+export { index, create, show, update, deleteWord as delete };
