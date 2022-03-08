@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 
 const wordSchema = new mongoose.Schema(
   {
+  name: String,
   word: String,
   definition: String,
   partOfSpeech: String,

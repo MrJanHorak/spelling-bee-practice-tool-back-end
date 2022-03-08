@@ -23,6 +23,7 @@ function newWord(req, res) {
 
 function create(req, res) {
   req.body.visible = !!req.body.visible;
+  console.log("i am creating!")
   Word.create(req.body)
     .then((word) => {
       res.redirect("/words");

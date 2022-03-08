@@ -1,12 +1,12 @@
 import "dotenv/config.js";
 import express from "express";
-import path from "path";
+// import path from "path";
 import { fileURLToPath } from "url";
-import session from "express-session";
-import methodOverride from "method-override";
+// import session from "express-session";
+// import methodOverride from "method-override";
 import logger from "morgan";
 import cors from "cors";
-import { passUserToView } from "./middleware/auth.js";
+// import { passUserToView } from "./middleware/auth.js";
 
 // connect to MongoDB with mongoose
 import('./config/database.js')
@@ -21,38 +21,38 @@ import { router as wordRouter } from "./routes/words.js"
 const app = express();
 
 // view engine setup
-app.set(
-  "views",
-  path.join(path.dirname(fileURLToPath(import.meta.url)), "views")
-);
-app.set("view engine", "ejs");
+// app.set(
+//   "views",
+//   path.join(path.dirname(fileURLToPath(import.meta.url)), "views")
+// );
+// app.set("view engine", "ejs");
 
 //middleware
-app.use(methodOverride("_method"));
+// app.use(methodOverride("_method"));
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  express.static(
-    path.join(path.dirname(fileURLToPath(import.meta.url)), "public")
-  )
-);
+// app.use(express.urlencoded({ extended: true }));
+// app.use(
+//   express.static(
+//     path.join(path.dirname(fileURLToPath(import.meta.url)), "public")
+//   )
+// );
 
-// session middleware
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: "lax",
-    },
-  })
-);
+// // session middleware
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       sameSite: "lax",
+//     },
+//   })
+// );
 
-//custom middleware
-app.use(passUserToView);
+// //custom middleware
+// app.use(passUserToView);
 
 // router middleware
 app.use("/", indexRouter)
