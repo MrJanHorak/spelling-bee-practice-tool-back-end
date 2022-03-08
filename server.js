@@ -56,10 +56,10 @@ app.use(passUserToView);
 
 // router middleware
 app.use("/", indexRouter)
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 app.use('/api/profiles', profilesRouter)
 app.use("/api/auth", authRouter);
-app.use("/words", wordRouter)
+app.use("/api/words", wordRouter)
 
 // catch 404
 app.use(function (req, res, next) {
