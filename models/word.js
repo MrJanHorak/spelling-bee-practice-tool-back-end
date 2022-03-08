@@ -4,6 +4,7 @@ const wordSchema = new mongoose.Schema(
   {
   word: String,
   definition: String,
+  partOfSpeech: String,
   sampleSentance: String,
   altPronunciations: String,
   wordOrigin: String,
