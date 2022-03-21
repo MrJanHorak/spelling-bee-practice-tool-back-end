@@ -1,7 +1,5 @@
 import mongoose from 'mongoose'
 
-console.log('imported')
-
 mongoose.connect(process.env.DATABASE_URL)
 	
 // shortcut to mongoose.connection object

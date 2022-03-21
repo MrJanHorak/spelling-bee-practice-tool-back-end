@@ -11,7 +11,6 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log("i am creating!");
   Word.create(req.body)
     .then(res.status(201).json(req.body))
     .catch((err) => {

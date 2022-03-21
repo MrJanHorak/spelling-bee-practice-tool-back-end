@@ -31,7 +31,6 @@ function signup(req, res) {
 }
 
 function login(req, res) {
-  console.log(req)
   User.findOne({ email: req.body.email })
   .then(user => {
     if (!user) return res.status(401).json({ err: 'User not found'})
