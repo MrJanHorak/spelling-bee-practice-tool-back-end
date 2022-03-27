@@ -32,3 +32,8 @@ or connect with me on Linked.in: https://www.linkedin.com/in/jan-horak/
 # Resources
 
 Bee Favicon from : https://favicon.io/emoji-favicons/honeybee/
+
+# Deployment links:
+
+[Front end on Netlify](https://spelling-bee-practice-app.netlify.app/)
+[back end on Heroku](https://speeling-bee-practice-app.herokuapp.com/)
