@@ -36,4 +36,5 @@ Bee Favicon from : https://favicon.io/emoji-favicons/honeybee/
 # Deployment links:
 
 [Front end on Netlify](https://spelling-bee-practice-app.netlify.app/)
-[back end on Heroku](https://speeling-bee-practice-app.herokuapp.com/)
+
+[Back end on Heroku](https://speeling-bee-practice-app.herokuapp.com/)

@@ -59,7 +59,6 @@ app.use(express.json());
 app.use("/", indexRouter)
 app.use("/api/auth", authRouter);
 app.use('/api/profiles', profilesRouter)
-app.use("/api/auth", authRouter);
 app.use("/api/words", wordRouter)
 
 // catch 404
