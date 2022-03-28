@@ -32,7 +32,7 @@ const app = express();
 // app.use(methodOverride("_method"));
 app.use(cors(
   {
-    origin: 'https://spelling-bee-practice-app.netlify.app/'
+    origin: 'https://spelling-bee-practice-app.netlify.app'
   }
 ));
 app.use(logger("dev"));
