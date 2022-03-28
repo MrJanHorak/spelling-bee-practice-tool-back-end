@@ -16,17 +16,12 @@ import { router as wordRouter } from "./routes/words.js"
 const app = express();
 
 
-app.use(cors(
-  // {
-  //   origin: 'https://spelling-bee-practice-app.netlify.app'
-  // }
-));
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 
 
 // router middleware
-// app.use("/", indexRouter)
 app.use("/api/auth", authRouter);
 app.use('/api/profiles', profilesRouter)
 app.use("/api/words", wordRouter)
