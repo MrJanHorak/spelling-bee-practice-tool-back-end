@@ -1,7 +1,7 @@
 import { Word } from "../models/word.js";
 
 function index(req, res) {
-  Word.find({}).sort({'word' : asc})
+  Word.find({}).sort({word : 1})
     .then((words) => {
       res.status(201).json(words);
     })
