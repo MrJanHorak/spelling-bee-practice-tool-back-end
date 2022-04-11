@@ -33,7 +33,7 @@ function show(req, res) {
 function update(req, res) {
   Word.findById(req.params.id)
     .then((word) => {
-      word.updateOne(rec.body, { new: true }).then(() => {
+      word.updateOne(req.body, { new: true }).then(() => {
         res.status(200).json(word);
       });
     })
