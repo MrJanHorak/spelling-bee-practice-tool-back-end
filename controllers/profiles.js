@@ -21,6 +21,7 @@ function show(req, res) {
 }
 
 function update(req, res) {
+  console.log('update profile: ', req.body, " params: ". req.params.id)
   Profile.findById(req.params.id)
     .then((profile) => {
       profile.updateOne(req.body, { new: true }).then(() => {
