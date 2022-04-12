@@ -10,7 +10,6 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  console.log("profile",req.params.id)
   Profile.findById(req.params.id)
     .then((profile) => {
       res.status(200).json(profile);
@@ -21,4 +20,17 @@ function show(req, res) {
     });
 }
 
-export { index, show }
+function update(req, res) {
+  Profile.findById(req.params.id)
+    .then((profile) => {
+      profile.updateOne(req.body, { new: true }).then(() => {
+        res.status(200).json(profile);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+}
+
+export { index, show, update }
