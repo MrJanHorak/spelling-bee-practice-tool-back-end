@@ -1,12 +1,12 @@
-import { Profile } from '../models/profile.js'
+import { Profile } from "../models/profile.js";
 
 function index(req, res) {
   Profile.find({})
-  .then(profiles => res.json(profiles))
-  .catch(err => {
-    console.log(err)
-    res.status(500).json(err)
-  })
+    .then((profiles) => res.json(profiles))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 }
 
 function show(req, res) {
@@ -21,7 +21,6 @@ function show(req, res) {
 }
 
 function update(req, res) {
-  console.log('update profile: ', req.body, " params: ". req.params.id)
   Profile.findById(req.params.id)
     .then((profile) => {
       profile.updateOne(req.body, { new: true }).then(() => {
@@ -34,4 +33,4 @@ function update(req, res) {
     });
 }
 
-export { index, show, update }
+export { index, show, update };
