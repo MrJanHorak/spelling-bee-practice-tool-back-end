@@ -17,6 +17,18 @@ const profileSchema = new mongoose.Schema({
   confidentWords: {
     type: Array,
   },
+  pitch: {
+    type: Number,
+    default: 1,
+  },
+  rate: {
+    type: Number,
+    default: 1,
+  },
+  voice: {
+    type: Number,
+    default: null,
+  },
   isAdmin: { type: Boolean, default: false },
 });
 

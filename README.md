@@ -4,6 +4,8 @@ My elementary school daughter recently came home after competing in her schools 
 
 That inspired me to see if I could design a tool to help her prepare. 
 
+This app makes use of React-Speech-Kit in combination with a speech recognition polyfill to help it function on other browsers and IOS devices.
+
 ### At the moment the app includes: 
 ---
 
@@ -82,6 +84,14 @@ for more information on this open source font project please go to: https://www.
 I struggled to figure out how to animate the letters on the flashcard in study mode. I thought it would be a great bonus if the letters would be emphasized as they are spelled my the computer. I found these helpful links from Sarah L. Fossheim. I adapted them to make it work for the study mode: <br/>
 https://fossheim.io/writing/posts/react-text-splitting/ <br/>
 https://fossheim.io/writing/posts/react-text-splitting-animations/ 
+
+Grade level words were found through google searches for Scripps Spelling Bee word lists all over the internet.
+
+Word definitions have been pulled in using the [WordsAPI](https://www.wordsapi.com/) in the Admin wordsearch function. I have free usage with a 500 word a day limit.
+
+Speech recognition is implemented using [react-speech-recognition](https://github.com/JamesBrill/react-speech-recognition) in combination with a [speech recognition polyfill](https://github.com/JamesBrill/react-speech-recognition/blob/master/docs/POLYFILLS.md) usinging [Speechly's](https://www.speechly.com/) free tier.
+
+The voice selection option in the profile view is adapted from the react-speech-kit [Github repository from MikeyParten](https://github.com/MikeyParton/react-speech-kit/blob/master/examples/src/useSpeechRecognition.jsx) 
 
 Avatars: 
 All individually downloaded for free from flaticon. The entire pack can be found at: [Icon Pack: Animals | Flat](https://www.flaticon.com/packs/animals-3)
