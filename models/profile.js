@@ -2,11 +2,20 @@ import mongoose from "mongoose";
 
 const practicedWords = new mongoose.Schema({
   word: String,
-  timesPracticed: Number,
-  timesCorrect: Number,
-  timesIncorrect: Number,
+  timesPracticed: {
+    type: Number,
+    default: 0,
+  },
+  timesCorrect: {
+    type: Number,
+    default: 0,
+  },
+  timesIncorrect: {
+    type: Number,
+    default: 0,
+  },
   recordOfWrongs: Array,
-})
+});
 
 const profileSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
