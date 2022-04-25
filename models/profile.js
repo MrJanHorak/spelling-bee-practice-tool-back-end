@@ -1,5 +1,13 @@
 import mongoose from "mongoose";
 
+const practicedWords = new mongoose.Schema({
+  word: String,
+  timesPracticed: Number,
+  timesCorrect: Number,
+  timesIncorrect: Number,
+  recordOfWrongs: Array,
+})
+
 const profileSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
   name: {
@@ -29,6 +37,7 @@ const profileSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
+  practicedWords: [practicedWords],
   isAdmin: { type: Boolean, default: false },
 });
 
