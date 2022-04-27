@@ -12,5 +12,6 @@ router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
 router.get('/:id', checkAuth, profilesCtrl.show)
 router.put('/:id', checkAuth, profilesCtrl.update)
+router.post("/:id/practicedWords", checkAuth, profileCtrl.addPracticedWord);
 
 export { router }
