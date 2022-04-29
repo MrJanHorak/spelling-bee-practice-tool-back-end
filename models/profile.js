@@ -14,10 +14,7 @@ const practicedWords = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  recordOfWrongs: {
-    type: Array,
-    default: [],
-  }
+  recordOfWrongs: [String],
 });
 
 const profileSchema = new mongoose.Schema({
