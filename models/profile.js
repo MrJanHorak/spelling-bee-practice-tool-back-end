@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
 
-const practicedWords = new mongoose.Schema({
-  word: String,
-  timesPracticed: {
-    type: Number,
-    default: 0,
-  },
-  timesCorrect: {
-    type: Number,
-    default: 0,
-  },
-  timesIncorrect: {
-    type: Number,
-    default: 0,
-  },
-  recordOfWrongs: [String],
-});
+// const practicedWords = new mongoose.Schema({
+//   word: String,
+//   timesPracticed: {
+//     type: Number,
+//     default: 0,
+//   },
+//   timesCorrect: {
+//     type: Number,
+//     default: 0,
+//   },
+//   timesIncorrect: {
+//     type: Number,
+//     default: 0,
+//   },
+//   recordOfWrongs: [String],
+// });
 
 const profileSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
@@ -46,7 +46,24 @@ const profileSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
-  practicedWords: [practicedWords],
+  practicedWords: [
+    {
+      word: String,
+      timesPracticed: {
+        type: Number,
+        default: 0,
+      },
+      timesCorrect: {
+        type: Number,
+        default: 0,
+      },
+      timesIncorrect: {
+        type: Number,
+        default: 0,
+      },
+      recordOfWrongs: [String],
+    },
+  ],
   isAdmin: { type: Boolean, default: false },
 });
 
