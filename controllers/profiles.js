@@ -34,6 +34,7 @@ function update(req, res) {
 }
 
 function addPracticedWord(req, res) {
+  console.log(req.body)
   Profile.findById(req.params.id)
     .then((profile) => {
       profile.practicedWords.push(req.body);
