@@ -37,11 +37,10 @@ function addPracticedWord(req, res) {
   console.log(req.body);
   Profile.findById(req.params.id)
     .then((profile) => {
-      profile.practicedWords.push(req.body).then(
-        profile.save().then(() => {
-          res.status(200).json(profile.practicedWords);
-        })
-      );
+      profile.practicedWords.push(req.body);
+      profile.save().then(() => {
+        res.status(200).json(profile.practicedWords);
+      });
     })
     .catch((err) => {
       console.log(err);
