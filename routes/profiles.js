@@ -1,17 +1,17 @@
-import { Router } from 'express'
-import * as profilesCtrl from '../controllers/profiles.js'
-import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
+import { Router } from "express";
+import * as profilesCtrl from "../controllers/profiles.js";
+import { decodeUserFromToken, checkAuth } from "../middleware/auth.js";
 
-const router = Router()
+const router = Router();
 
 /*---------- Public Routes ----------*/
 
-
 /*---------- Protected Routes ----------*/
-router.use(decodeUserFromToken)
-router.get('/', checkAuth, profilesCtrl.index)
-router.get('/:id', checkAuth, profilesCtrl.show)
-router.put('/:id', checkAuth, profilesCtrl.update)
+router.use(decodeUserFromToken);
+router.get("/", checkAuth, profilesCtrl.index);
+router.get("/:id", checkAuth, profilesCtrl.show);
+router.put("/:id", checkAuth, profilesCtrl.update);
 router.post("/:id/practicedWords", checkAuth, profilesCtrl.addPracticedWord);
+router.put("/:id/practicedWords/:practicedWordId", checkAuth, groupCtrl.updatePracticedWord);
 
-export { router }
+export { router };
