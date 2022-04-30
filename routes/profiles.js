@@ -12,6 +12,6 @@ router.get("/", checkAuth, profilesCtrl.index);
 router.get("/:id", checkAuth, profilesCtrl.show);
 router.put("/:id", checkAuth, profilesCtrl.update);
 router.post("/:id/practicedWords", checkAuth, profilesCtrl.addPracticedWord);
-router.put("/:id/practicedWords/:practicedWordId", checkAuth, groupCtrl.updatePracticedWord);
+router.put("/:id/practicedWords/:practicedWordId", checkAuth, profilesCtrl.updatePracticedWord);
 
 export { router };
