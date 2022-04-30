@@ -34,7 +34,6 @@ function update(req, res) {
 }
 
 function addPracticedWord(req, res) {
-  console.log(req.body);
   Profile.findById(req.params.id)
     .then((profile) => {
       profile.practicedWords.push(req.body);
@@ -48,22 +47,25 @@ function addPracticedWord(req, res) {
     });
 }
 
-const updatePracticedWord = async (req, res) => {
-  try {
-    const profile = await Profile.findById(req.params.id);
-    const updatedPracticedWord = await profile.pracitedWords.find(
-      (practicedWord) => practicedWord._id.equals(req.params.practicedWordId)
-    );
-    updatedPracticedWord.word = req.body.word;
-    updatedPracticedWord.timesPracticed = rec.body.timesPracticed;
-    updatedPracticedWord.timesCorrect = rec.body.timesCorrect;
-    updatedPracticedWord.timesInorrect = rec.body.timesIncorrect;
-    updatedPracticedWord.recordOfWrongs = rec.body.recordOfWrongs;
-    await profile.save();
-    return res.status(200).json(updatedComment);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-};
+function updatePracticedWord(req, res) {
+  Profile.findById(req.params.id)
+    .then((profile) => {
+      profile.pracitedWords.find((practicedWord) =>
+        practicedWord._id.equals(req.params.practicedWordId)
+      );
+      practicedWord.word = req.body.word;
+      practicedWord.timesPracticed = rec.body.timesPracticed;
+      practicedWord.timesCorrect = rec.body.timesCorrect;
+      practicedWord.timesInorrect = rec.body.timesIncorrect;
+      practicedWord.recordOfWrongs = rec.body.recordOfWrongs;
+      profile.save().then(() => {
+        res.status(200).json(updatedComment);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json(error);
+    });
+}
 
 export { index, show, update, addPracticedWord, updatePracticedWord };
