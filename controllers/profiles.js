@@ -53,12 +53,7 @@ function updatePracticedWord(req, res) {
       profile.pracitedWords.find((practicedWord) =>
         practicedWord._id.equals(req.params.practicedWordId)
       );
-      practicedWord.word = req.body.word;
-      practicedWord.timesPracticed = rec.body.timesPracticed;
-      practicedWord.timesCorrect = rec.body.timesCorrect;
-      practicedWord.timesInorrect = rec.body.timesIncorrect;
-      practicedWord.recordOfWrongs = rec.body.recordOfWrongs;
-      profile.save().then(() => {
+      profile.practicedWordId.updateOne(rec.body, { new: true }).then(() => {
         res.status(200).json(updatedComment);
       });
     })
