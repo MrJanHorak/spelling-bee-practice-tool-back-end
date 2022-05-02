@@ -48,17 +48,14 @@ function addPracticedWord(req, res) {
 }
 
 function updatePracticedWord(req, res) {
-  console.log("req.body: " ,req.body)
-  console.log(" req.params: ", req.params)
   Profile.findById(req.params.id)
     .then((profile) => {
-      console.log("profile: ", profile)
       const wordToUpdate = profile.practicedWords.findIndex((practicedWord) =>
       practicedWord._id.equals(req.params.practicedWordId)
       )
-      console.log("practicedWord: ",wordToUpdate)
-      profile.practicedWords[wordToUpdate].updateOne(req.body, { new: true }).then(() => {
-        res.status(200).json(updatedComment);
+      profile.practicedWords[wordToUpdate] = req.body
+      profile.practicedWords.save().then(() => {
+        res.status(200).json(profile.practicedWords[wordToUpdate]);
       });
     })
     .catch((err) => {
