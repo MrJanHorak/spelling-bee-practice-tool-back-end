@@ -54,11 +54,12 @@ function updatePracticedWord(req, res) {
     .then((profile) => {
       console.log("profile: ", profile)
       profile.practicedWords.findIndex((practicedWord) =>
-        practicedWord._id.equals(req.params.practicedWordId)
-      );
-      profile.practicedWords[practicedWord].updateOne(req.body, { new: true }).then(() => {
+      practicedWord._id.equals(req.params.practicedWordId)
+      )
+      console.log("practicedWord: ",practicedWord)
+      .then(profile.practicedWords[practicedWord].updateOne(req.body, { new: true }).then(() => {
         res.status(200).json(updatedComment);
-      });
+      }));
     })
     .catch((err) => {
       console.log(err);
