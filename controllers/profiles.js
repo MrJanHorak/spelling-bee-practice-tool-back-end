@@ -54,7 +54,7 @@ function updatePracticedWord(req, res) {
       practicedWord._id.equals(req.params.practicedWordId)
       )
       profile.practicedWords[wordToUpdate] = req.body
-      profile.practicedWords.save().then(() => {
+      profile.save().then(() => {
         res.status(200).json(profile.practicedWords[wordToUpdate]);
       });
     })
