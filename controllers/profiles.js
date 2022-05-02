@@ -53,11 +53,11 @@ function updatePracticedWord(req, res) {
   Profile.findById(req.params.id)
     .then((profile) => {
       console.log("profile: ", profile)
-      profile.practicedWords.findIndex((practicedWord) =>
+      const wordToUpdate = profile.practicedWords.findIndex((practicedWord) =>
       practicedWord._id.equals(req.params.practicedWordId)
       )
-      console.log("practicedWord: ",practicedWord)
-      .then(profile.practicedWords[practicedWord].updateOne(req.body, { new: true }).then(() => {
+      console.log("practicedWord: ",wordToUpdate)
+      .then(profile.practicedWords[wordToUpdate].updateOne(req.body, { new: true }).then(() => {
         res.status(200).json(updatedComment);
       }));
     })
