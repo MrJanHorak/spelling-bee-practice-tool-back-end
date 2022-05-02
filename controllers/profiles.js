@@ -48,7 +48,8 @@ function addPracticedWord(req, res) {
 }
 
 function updatePracticedWord(req, res) {
-  console.log("req.body: " + rec.body + " req.params: " + req.params)
+  console.log("req.body: " ,rec.body)
+  console.log(" req.params: ", req.params)
   Profile.findById(req.params.id)
     .then((profile) => {
       console.log("profile: ", profile)
