@@ -30,6 +30,34 @@ function signup(req, res) {
   })
 }
 
+function addStudent(req, res) {
+  Profile.findOne({ email: req.body.email })
+  .then(profile => {
+    if (profile.name === req.body.name) {
+      throw new Error('Account already exists')
+    } else if (!process.env.SECRET){
+      throw new Error('no SECRET in .env file')
+    } else {
+      Profile.create(req.body)
+      .then(newProfile => {
+        req.body.profile = newProfile._id
+        User.create(req.body)
+        .then(user => {
+          const token = createJWT(user)
+          res.status(200).json({ token })
+        })
+        .catch(err => {
+          Profile.findByIdAndDelete(req.body.profile)
+          res.status(500).json({err: err.errmsg})
+        })
+      })
+    }
+  })
+  .catch(err => {
+    res.status(500).json({err: err.message})
+  })
+}
+
 function login(req, res) {
   User.findOne({ name: req.body.name })
   .then(user => {
@@ -77,4 +105,4 @@ function createJWT(user) {
   )
 }
 
-export {signup, login, changePassword}
+export {signup, login, changePassword, addStudent}
