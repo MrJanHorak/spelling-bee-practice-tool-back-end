@@ -31,7 +31,7 @@ function signup(req, res) {
 }
 
 function login(req, res) {
-  User.findOne({ email: req.body.email })
+  User.findOne({ name: req.body.name })
   .then(user => {
     if (!user) return res.status(401).json({ err: 'User not found'})
     user.comparePassword(req.body.pw, (err, isMatch) => {
