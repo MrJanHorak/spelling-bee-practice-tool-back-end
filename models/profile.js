@@ -33,6 +33,10 @@ const profileSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+  },
   confidentWords: {
     type: Array,
   },
