@@ -37,6 +37,7 @@ const profileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  students: [{ type: mongoose.Schema.Types.ObjectId, ref: "Profile" }],
   confidentWords: {
     type: Array,
   },
