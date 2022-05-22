@@ -50,7 +50,7 @@ const profileSchema = new mongoose.Schema({
   },
   voice: {
     type: Number,
-    default: null,
+    default: 0,
   },
   practicedWords: [practicedWords],
   isAdmin: { type: Boolean, default: false },
