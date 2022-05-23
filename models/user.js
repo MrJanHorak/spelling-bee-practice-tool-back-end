@@ -27,7 +27,7 @@ userSchema.set("toJSON", {
 
 userSchema.pre("save", function (next) {
   const user = this;
-  if (!user.isModified("password") || !!user.role === 'student') return next();
+  if (!user.isModified("password") || !user.role === "student") return next();
   bcrypt
     .hash(user.password, SALT_ROUNDS)
     .then((hash) => {
