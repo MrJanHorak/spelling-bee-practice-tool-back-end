@@ -30,7 +30,7 @@ function signup(req, res) {
 }
 
 function addStudent(req, res) {
-  console.log('in addStudent: ', req )
+  console.log('in addStudent req.body : ', req.body )
   Profile.findOne({ email: req.body.email })
     .then((profile) => {
       console.log('found profile: ',profile)
