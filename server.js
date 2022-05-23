@@ -16,7 +16,9 @@ import { router as wordRouter } from "./routes/words.js"
 const app = express();
 
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(logger("dev"));
 app.use(express.json());
 
