@@ -42,7 +42,7 @@ function addStudent(req, res) {
         User.findOne({ email: req.body.email })
           .then((user) => {
             console.log('found user based upon email: ', user)
-            req.body.pw = user.pw;
+            req.body.password = user.password;
             req.body.email = user.email;
             console.log("Req Body after email and pw added: ",req.body )
           })
