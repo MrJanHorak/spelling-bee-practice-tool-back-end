@@ -8,6 +8,10 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, lowercase: true },
     password: String,
     profile: { type: mongoose.Schema.Types.ObjectId, ref: "Profile" },
+    role: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -23,7 +27,7 @@ userSchema.set("toJSON", {
 
 userSchema.pre("save", function (next) {
   const user = this;
-  if (!user.isModified("password")) return next();
+  if (!user.isModified("password") || !!user.role === 'student') return next();
   bcrypt
     .hash(user.password, SALT_ROUNDS)
     .then((hash) => {
