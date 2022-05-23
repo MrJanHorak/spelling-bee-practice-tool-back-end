@@ -20,7 +20,7 @@ const practicedWords = new mongoose.Schema(
 );
 
 const profileSchema = new mongoose.Schema({
-  email: { type: String, required: true, lowercase: true, unique: true },
+  email: { type: String, required: true, lowercase: true },
   name: {
     type: String,
     required: true,
