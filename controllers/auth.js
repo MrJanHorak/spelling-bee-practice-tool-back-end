@@ -56,6 +56,10 @@ function addStudent(req, res) {
                   const token = createJWT(newUser);
                   res.status(200).json({ token });
                 })
+                .then(
+                  profile.students.push(newProfile._id),
+                  profile.save()
+                  )
                 .catch((err) => {
                   Profile.findByIdAndDelete(req.body.profile);
                   res.status(500).json({ err: err.errmsg });
