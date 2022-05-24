@@ -1,7 +1,12 @@
 import { Profile } from "../models/profile.js";
 
 function index(req, res) {
-  Profile.find({}).populate('students')
+  Profile.find({})
+    .populate({
+      path: "students",
+      model: "Profile",
+      select: "name",
+    })
     .then((profiles) => res.json(profiles))
     .catch((err) => {
       console.log(err);
@@ -51,9 +56,9 @@ function updatePracticedWord(req, res) {
   Profile.findById(req.params.id)
     .then((profile) => {
       const wordToUpdate = profile.practicedWords.findIndex((practicedWord) =>
-      practicedWord._id.equals(req.params.practicedWordId)
-      )
-      profile.practicedWords[wordToUpdate] = req.body
+        practicedWord._id.equals(req.params.practicedWordId)
+      );
+      profile.practicedWords[wordToUpdate] = req.body;
       profile.save().then(() => {
         res.status(200).json(profile.practicedWords[wordToUpdate]);
       });
