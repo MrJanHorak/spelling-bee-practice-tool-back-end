@@ -30,10 +30,9 @@ function signup(req, res) {
 }
 
 function addStudent(req, res) {
-  console.log("in addStudent req.body : ", req.body);
   Profile.findOne({ name: req.body.name })
     .then((profile) => {
-      if (profile.name === req.body.name) {
+      if (profile) {
         throw new Error("Account already exists");
       } else if (!process.env.SECRET) {
         throw new Error("no SECRET in .env file");
