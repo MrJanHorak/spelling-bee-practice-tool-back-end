@@ -15,7 +15,11 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  Profile.findById(req.params.id)
+  Profile.findById(req.params.id).populate({
+    path: "students",
+    model: "Profile",
+    select: "name",
+  })
     .then((profile) => {
       res.status(200).json(profile);
     })
