@@ -5,7 +5,7 @@ function index(req, res) {
     .populate({
       path: "students",
       model: "Profile",
-      select: ["name", "avatar", "practicedWords"],
+      select: ["name", "avatar"],
     })
     .then((profiles) => res.json(profiles))
     .catch((err) => {
@@ -16,7 +16,7 @@ function index(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-    .populate({ path: "students", select: ["name", "avatar"] })
+    .populate({ path: "students", select: ["name", "avatar", "practicedWords"] })
     .then((profile) => {
       res.status(200).json(profile);
     })
