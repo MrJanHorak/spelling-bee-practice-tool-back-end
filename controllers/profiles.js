@@ -2,8 +2,7 @@ import { Profile } from "../models/profile.js";
 
 function index(req, res) {
   Profile.find({})
-    .populate({ path: "students", select: "name" })
-    .populate({ path: "students", select: "avatar" })
+    .populate({ path: "students", select: ["name", "avatar"] })
     .then((profiles) => res.json(profiles))
     .catch((err) => {
       console.log(err);
@@ -13,8 +12,7 @@ function index(req, res) {
 
 function show(req, res) {
   Profile.findById(req.params.id)
-    .populate({ path: "students", select: "name" })
-    .populate({ path: "students", select: "avatar" })
+    .populate({ path: "students", select: ["name", "avatar"] })
     .then((profile) => {
       res.status(200).json(profile);
     })
