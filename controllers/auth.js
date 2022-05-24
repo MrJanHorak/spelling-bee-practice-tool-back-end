@@ -30,10 +30,9 @@ function signup(req, res) {
 }
 
 function addStudent(req, res) {
-  console.log('in addStudent req.body : ', req.body )
-  Profile.findOne({ email: req.body.email })
+  console.log("in addStudent req.body : ", req.body);
+  Profile.findOne({ name: req.body.name })
     .then((profile) => {
-      console.log('found profile: ',profile)
       if (profile.name === req.body.name) {
         throw new Error("Account already exists");
       } else if (!process.env.SECRET) {
@@ -41,25 +40,25 @@ function addStudent(req, res) {
       } else {
         User.findOne({ email: req.body.email })
           .then((user) => {
-            console.log('found user based upon email: ', user)
             req.body.password = user.password;
             req.body.email = user.email;
-            console.log("Req Body after email and pw added: ",req.body )
           })
           .then(
             Profile.create(req.body).then((newProfile) => {
-              console.log("New Profile: ",newProfile)
               req.body.profile = newProfile._id;
               User.create(req.body)
                 .then((newUser) => {
-                  console.log('new user created: ', newUser)
                   const token = createJWT(newUser);
                   res.status(200).json({ token });
                 })
                 .then(
-                  profile.students.push(newProfile._id),
-                  profile.save()
+                  Profile.findOne({ email: req.body.email }).then(
+                    (parentProfile) => {
+                      parentProfile.students.push(newProfile._id),
+                        parentProfile.save();
+                    }
                   )
+                )
                 .catch((err) => {
                   Profile.findByIdAndDelete(req.body.profile);
                   res.status(500).json({ err: err.errmsg });
